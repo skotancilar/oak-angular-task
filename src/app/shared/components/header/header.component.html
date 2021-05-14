@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="icon"
+    aria-label="sidebar button"
+    (click)="toggleSidebar()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>TBI</span>
+  <span class="spacer"></span>
+  <mat-nav-list>
+    <div class="profile">
+      <div class="header">
+        <h3>Sefa KOTANCILAR</h3>
+      </div>
+      <img
+        matRipple
+        [matMenuTriggerFor]="menu"
+        src="https://fastly.4sqi.net/img/user/130x130/92444158-SUSHCYANQJJUV4FI.jpg"
+        alt="profile pic"
+      />
+    </div>
+  </mat-nav-list>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Log Out</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

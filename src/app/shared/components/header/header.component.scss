@@ -1,0 +1,26 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-nav-list {
+  display: flex;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1 1 250px;
+  img {
+    cursor: pointer;
+    margin-left: 20px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: translateY(0);
+    transition: all 0.2s ease-in;
+    :hover {
+      transform: translateY(5px);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<mat-nav-list>
+  <h1>MENU</h1>
+  <mat-divider></mat-divider>
+
+  <a mat-list-item [routerLink]="['/times']" routerLinkActive="list-item-active"
+    ><mat-icon>schedule</mat-icon> <span>TIMES</span>
+  </a>
+
+  <a
+    mat-list-item
+    [routerLink]="['/books']"
+    routerLinkActive="list-item-active"
+  >
+    <mat-icon>menu_book</mat-icon> <span>BOOKS</span>
+  </a>
+
+  <a
+    mat-list-item
+    [routerLink]="['/images']"
+    routerLinkActive="list-item-active"
+    ><mat-icon>image</mat-icon> <span>IMAGES</span>
+  </a>
+
+  <mat-divider></mat-divider>
+</mat-nav-list>
