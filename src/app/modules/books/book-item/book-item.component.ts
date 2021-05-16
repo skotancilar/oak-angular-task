@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Book } from '../book.model';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-book-item',
@@ -7,11 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./book-item.component.scss'],
 })
 export class BookItemComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  @Input() book!: Book;
+  @Input() index!: number;
+  constructor(
+    private booksService: BookService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
 
-  onEditBook() {
-    this.router.navigate(['books', 'id', 'edit']);
+  onEditBook(event: Event): void {
+    this.router.navigate(['books', this.index, 'edit']);
+    event.stopPropagation();
   }
 }

@@ -1,9 +1,5 @@
 <mat-card fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
-  <img
-    mat-card-lg-image
-    src="https://images-na.ssl-images-amazon.com/images/I/51LCJlg5oFS._SX331_BO1,204,203,200_.jpg"
-    alt=""
-  />
+  <img mat-card-lg-image src="{{ book.imgPath }}" alt="" />
   <div
     fxLayout="column"
     fxLayoutAlign="center center"
@@ -11,17 +7,21 @@
     fxFlex="1 1 auto"
   >
     <mat-card-header>
-      <mat-card-title> <h1>Shadow And Bone</h1></mat-card-title>
+      <mat-card-title>
+        <h1>{{ book.title }}</h1></mat-card-title
+      >
     </mat-card-header>
 
     <mat-card-content>
-      <h2><b>Author:</b> Leigh Bardugo</h2>
+      <h2><b>Author:</b> {{ book.author }}</h2>
 
-      <h2><b>Genre:</b> Fantasy</h2>
+      <h2><b>Genre:</b> {{ book.genre }}</h2>
 
-      <h2><b>Publication Date:</b> May 7, 2013</h2>
+      <h2>
+        <b>Publication Date:</b> {{ book.publishDate | date: "longDate" }}
+      </h2>
 
-      <h2><b>ISBN: </b> 1250027438</h2>
+      <h2><b>ISBN: </b> {{ book.isbn }}</h2>
     </mat-card-content>
   </div>
 </mat-card>

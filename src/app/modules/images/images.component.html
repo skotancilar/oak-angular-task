@@ -1,1 +1,10 @@
-<p>images works!</p>
+<mat-grid-list cols="4" rowHeight="200px">
+  <mat-grid-tile
+    *ngFor="let item of list; let i = index"
+    rowspan="1"
+    colspan="1"
+    style="background-color: blue"
+  >
+    <!-- <img src="https://picsum.photos/200/{{ 300 + i }}" alt="item" /> -->
+  </mat-grid-tile>
+</mat-grid-list>

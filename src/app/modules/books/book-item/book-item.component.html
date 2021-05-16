@@ -1,14 +1,11 @@
 <mat-card
+  [routerLink]="[index]"
   routerLinkActive="active"
   fxLayout="row"
   fxLayoutAlign="start center"
   fxLayoutGap="5px"
 >
-  <img
-    mat-card-image
-    src="https://images-na.ssl-images-amazon.com/images/I/51LCJlg5oFS._SX331_BO1,204,203,200_.jpg"
-    alt="book name"
-  />
+  <img mat-card-image src="{{ book.imgPath }}" alt="book name" />
   <mat-card-header
     fxLayout="column"
     fxLayoutAlign="start center"
@@ -16,10 +13,10 @@
     fxFlex="1 1 auto"
   >
     <mat-card-title>
-      <h1>Shadow And Bone</h1>
+      <h1>{{ book.title }}</h1>
     </mat-card-title>
     <mat-card-subtitle>
-      <h2><b>Author:</b> Leigh Bardugo</h2>
+      <h2><b>Author:</b> {{ book.author }}</h2>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions
@@ -27,7 +24,12 @@
     fxLayoutAlign="start center"
     fxLayoutGap="10px"
   >
-    <button mat-fab (click)="onEditBook()" color="accent" aria-label="delete">
+    <button
+      mat-fab
+      (click)="onEditBook($event)"
+      color="accent"
+      aria-label="delete"
+    >
       <mat-icon>edit</mat-icon>
     </button>
     <button mat-fab color="warn" aria-label="edit">
@@ -35,35 +37,3 @@
     </button>
   </mat-card-actions>
 </mat-card>
-
-<mat-card fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
-  <img
-    mat-card-image
-    src="https://images-na.ssl-images-amazon.com/images/I/5146m4I7h-L._SX332_BO1,204,203,200_.jpg"
-    alt="book name"
-  />
-  <div>
-    <h2>Swann's Way: In Search of Lost Time, Vol. 1</h2>
-    <h3>Marcel Proust</h3>
-  </div>
-  <div>
-    <h4>May 7, 2013</h4>
-    <h4>1250027438</h4>
-  </div>
-</mat-card>
-<mat-card fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px">
-  <img
-    mat-card-image
-    src="https://m.media-amazon.com/images/I/51NtELEqgzS._SY346_.jpg"
-    alt="book name"
-  />
-  <div>
-    <h2>The Catcher in the Rye</h2>
-    <h3>Marcel Proust</h3>
-  </div>
-  <div>
-    <h4>May 7, 2013</h4>
-    <h4>1250027438</h4>
-  </div>
-</mat-card>
-The Great Gatsby The Fellowship of the Ring

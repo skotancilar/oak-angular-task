@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Book } from '../book.model';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-book-list',
@@ -7,9 +9,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./book-list.component.scss'],
 })
 export class BookListComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  books!: Book[];
 
-  ngOnInit(): void {}
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.books = this.bookService.getBooks();
+  }
 
   onAddBook() {
     this.router.navigate(['new'], { relativeTo: this.route });

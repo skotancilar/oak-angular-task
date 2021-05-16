@@ -10,5 +10,9 @@
   <mat-card-title>Add New Book</mat-card-title>
 </mat-card>
 <mat-nav-list>
-  <app-book-item></app-book-item>
+  <app-book-item
+    *ngFor="let bookEl of books; let i = index"
+    [book]="bookEl"
+    [index]="i"
+  ></app-book-item>
 </mat-nav-list>
