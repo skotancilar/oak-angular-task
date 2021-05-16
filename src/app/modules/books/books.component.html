@@ -1,1 +1,8 @@
-<p>books works!</p>
+<div fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="25px">
+  <div fxFlex="calc(50% - 32px)" fxFlex.lt-md="100">
+    <app-book-list></app-book-list>
+  </div>
+  <div fxFlex="calc(50% - 32px)" fxFlex.lt-md="100">
+    <router-outlet></router-outlet>
+  </div>
+</div>

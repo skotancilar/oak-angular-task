@@ -1,0 +1,19 @@
+<mat-card class="hero">
+  <button
+    class="back-button"
+    (click)="backToTimes()"
+    mat-icon-button
+    color="primary"
+  >
+    <mat-icon>arrow_back</mat-icon>
+    <span>Back</span>
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <h2 class="time-title text-center">Africa / Abidjan</h2>
+  <h3 class="text-center">Date:</h3>
+  <h2 class="text-center">{{ time | date }}</h2>
+  <h3 class="text-center">Time:</h3>
+  <h2 class="text-center">{{ time | date: "hh:mm:ss" }}</h2>
+</mat-card>

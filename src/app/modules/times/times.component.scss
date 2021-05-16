@@ -1,0 +1,18 @@
+mat-card {
+  height: 500px;
+  padding: 0;
+  background-image: url("https://img.freepik.com/free-vector/frequently-asked-questions-people-around-exclamations_132971-189.jpg?size=626&ext=jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: auto;
+  @media screen and (max-width: 959px) {
+    margin-bottom: 32px;
+  }
+}
+h2 {
+  text-align: center;
+}
+.list-button {
+  display: block;
+  margin: auto;
+}

@@ -1,1 +1,54 @@
-<p>times works!</p>
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="25px"
+>
+  <div fxFlex="calc(50% - 32px)" fxFlex.lt-md="100">
+    <mat-card>
+      <h2 class="title"><u>Now In Your TIMEZONE:</u></h2>
+      <h2>{{ time | date: "medium" }}</h2>
+
+      <button
+        class="list-button"
+        mat-raised-button
+        [matMenuTriggerFor]="animals"
+        color="primary"
+      >
+        Select the timezone that you want
+      </button>
+      <mat-menu #animals="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="africa">Africa</button>
+        <button mat-menu-item [matMenuTriggerFor]="america">America</button>
+      </mat-menu>
+
+      <mat-menu #africa="matMenu">
+        <button (click)="onTimeSelect()" mat-menu-item>Abidjan</button>
+        <button mat-menu-item>Accra</button>
+        <button mat-menu-item>Bissau</button>
+        <button mat-menu-item>Cairo</button>
+        <button mat-menu-item>Casablanca</button>
+      </mat-menu>
+
+      <mat-menu #america="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="argentina">Argentina</button>
+        <button mat-menu-item>Asuncion</button>
+        <button mat-menu-item>Atikokan</button>
+        <button mat-menu-item>Bahia</button>
+        <button mat-menu-item>Bahia Banderas</button>
+        <button mat-menu-item>Belem</button>
+        <button mat-menu-item>Belize</button>
+      </mat-menu>
+
+      <mat-menu #argentina="matMenu">
+        <button mat-menu-item>Bueno Aires</button>
+        <button mat-menu-item>Catamarca</button>
+        <button mat-menu-item>Cordoba</button>
+        <button mat-menu-item>Jujuy</button>
+        <button mat-menu-item>La Rioja</button>
+      </mat-menu>
+    </mat-card>
+  </div>
+  <div fxFlex="calc(50% - 32px)" fxFlex.lt-md="100">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h3 {
+  text-align: center;
+}
+
+mat-card {
+  padding: 25px;
+  max-width: 300px;
+
+  img {
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}

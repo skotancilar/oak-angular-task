@@ -1,0 +1,36 @@
+mat-card {
+  height: 500px;
+  padding: 0;
+}
+h3 {
+  margin-bottom: 0;
+}
+.time-title {
+  text-align: center;
+  margin-top: 16px;
+}
+.text-center {
+  text-align: center;
+}
+.back-button {
+  margin: 8px 16px;
+}
+
+.hero {
+  position: relative;
+}
+
+.hero:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://st2.depositphotos.com/1041725/45441/v/380/depositphotos_454417092-stock-illustration-purple-alarm-clock-illustration-vector.jpg");
+  background-size: cover;
+  background-position-x: 150px;
+  background-position-y: 100px;
+  background-repeat: no-repeat;
+  background-attachment: center;
+  opacity: 0.2;
+}

@@ -1,0 +1,26 @@
+:host {
+  background-color: #fff;
+  :hover {
+    cursor: pointer;
+  }
+}
+.active {
+  background-color: #d7cdeb;
+}
+
+mat-card {
+  margin-bottom: 15px;
+}
+
+mat-card-content {
+}
+
+img {
+  margin: 0;
+  width: 120px;
+  object-fit: contain;
+}
+
+h3:last-of-type {
+  margin: 0;
+}
