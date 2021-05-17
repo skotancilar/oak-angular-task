@@ -5,7 +5,12 @@
   fxLayoutAlign="start center"
   fxLayoutGap="5px"
 >
-  <img mat-card-image src="{{ book.imgPath }}" alt="book name" />
+  <img
+    mat-card-image
+    src="{{ book.imgPath }}"
+    alt="{{ book.title }}"
+    (error)="updateUrl($event)"
+  />
   <mat-card-header
     fxLayout="column"
     fxLayoutAlign="start center"
@@ -20,6 +25,7 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions
+    class="card-actions"
     fxLayout="column"
     fxLayoutAlign="start center"
     fxLayoutGap="10px"
@@ -32,7 +38,7 @@
     >
       <mat-icon>edit</mat-icon>
     </button>
-    <button mat-fab color="warn" aria-label="edit">
+    <button (click)="onDeleteBook()" mat-fab color="warn" aria-label="edit">
       <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>

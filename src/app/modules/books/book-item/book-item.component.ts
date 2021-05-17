@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Book } from '../book.model';
 import { BookService } from '../book.service';
 
@@ -11,16 +11,30 @@ import { BookService } from '../book.service';
 export class BookItemComponent implements OnInit {
   @Input() book!: Book;
   @Input() index!: number;
+  id!: number;
+  isSelected = true;
+  defaultBookCover = 'https://i.stack.imgur.com/1hvpD.jpg';
   constructor(
-    private booksService: BookService,
+    private bookService: BookService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+    });
+  }
 
   onEditBook(event: Event): void {
     this.router.navigate(['books', this.index, 'edit']);
     event.stopPropagation();
+  }
+  onDeleteBook() {
+    this.bookService.deleteBook(this.index);
+    this.router.navigate(['/books']);
+  }
+  updateUrl(event: Event) {
+    this.book.imgPath = this.defaultBookCover;
   }
 }

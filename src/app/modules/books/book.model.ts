@@ -3,7 +3,7 @@ export class Book {
   public author: string;
   public imgPath: string;
   public genre: string;
-  public publishDate: Date;
+  public pubDate: Date;
   public isbn: number;
   constructor(
     title: string,
@@ -16,7 +16,7 @@ export class Book {
     this.title = title;
     this.author = author;
     this.imgPath = imgPath;
-    this.publishDate = publishDate;
+    this.pubDate = publishDate;
     this.genre = genre;
     this.isbn = isbn;
   }

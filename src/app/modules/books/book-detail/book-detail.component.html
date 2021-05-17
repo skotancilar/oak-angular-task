@@ -17,9 +17,7 @@
 
       <h2><b>Genre:</b> {{ book.genre }}</h2>
 
-      <h2>
-        <b>Publication Date:</b> {{ book.publishDate | date: "longDate" }}
-      </h2>
+      <h2><b>Publication Date:</b> {{ book.pubDate | date: "longDate" }}</h2>
 
       <h2><b>ISBN: </b> {{ book.isbn }}</h2>
     </mat-card-content>

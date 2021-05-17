@@ -1,61 +1,96 @@
 <mat-card>
-  <mat-card-content>
-    <mat-form-field appearance="outline">
-      <mat-label>Book Name</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>title</mat-icon>
-      <mat-hint>Book Title</mat-hint>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Author</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>edit</mat-icon>
-      <mat-hint>Author Name</mat-hint>
-    </mat-form-field>
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+  <form [formGroup]="bookForm" (ngSubmit)="onSave()">
+    <mat-card-content>
       <mat-form-field appearance="outline">
-        <mat-label>Image Path</mat-label>
-        <input matInput />
-        <mat-icon matSuffix>image</mat-icon>
-        <mat-hint>Book Cover Image Url</mat-hint>
+        <mat-label>Book Title</mat-label>
+        <input type="text" name="title" s matInput formControlName="title" />
+        <mat-icon matSuffix>title</mat-icon>
+        <mat-error *ngIf="this.bookForm.controls.title.invalid"
+          >You must enter title</mat-error
+        >
       </mat-form-field>
-      <img
-        mat-card-sm-image
-        src="https://images-na.ssl-images-amazon.com/images/I/51LCJlg5oFS._SX331_BO1,204,203,200_.jpg"
-        alt=""
-      />
-    </div>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Genre</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>category</mat-icon>
-      <mat-hint>Enter Genre</mat-hint>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Publication Date</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>event</mat-icon>
-      <mat-hint>Enter the Publication Date</mat-hint>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>ISBN</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>qr_code_2</mat-icon>
-      <mat-hint>International Standard Book Number</mat-hint>
-    </mat-form-field>
-  </mat-card-content>
-  <mat-card-actions
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    fxLayoutGap="20px"
-  >
-    <button mat-raised-button color="primary">
-      <mat-icon>save</mat-icon><span>Save</span>
-    </button>
+      <mat-form-field appearance="outline">
+        <mat-label>Author</mat-label>
+        <input type="text" name="author" matInput formControlName="author" />
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-error *ngIf="this.bookForm.controls.author.invalid"
+          >You must enter the author</mat-error
+        >
+      </mat-form-field>
 
-    <button mat-raised-button color="warn">
-      <mat-icon>cancel</mat-icon><span>Cancel</span>
-    </button>
-  </mat-card-actions>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+        <mat-form-field appearance="outline">
+          <mat-label>Image Path</mat-label>
+          <input type="url" name="imgPath" matInput formControlName="imgPath" />
+          <mat-icon matSuffix>image</mat-icon>
+          <mat-hint>Book Cover Image Url</mat-hint>
+        </mat-form-field>
+        <img
+          mat-card-sm-image
+          src="{{ this.bookForm.value.imgPath }}"
+          (error)="onErrorUrl($event)"
+          alt="{{ this.bookForm.value.title }}"
+        />
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Select a Genre</mat-label>
+        <mat-select name="genre" formControlName="genre">
+          <mat-option *ngFor="let genre of genres" [value]="genre">{{
+            genre
+          }}</mat-option>
+        </mat-select>
+        <mat-icon matSuffix>category</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Publication Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="pubDate"
+          [value]="this.bookForm.controls.pubDate.value"
+          [max]="maxDate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>ISBN</mat-label>
+        <input
+          type="number"
+          name="isbn"
+          matInput
+          formControlName="isbn"
+          min="0"
+        />
+        <mat-icon matSuffix>qr_code_2</mat-icon>
+        <mat-hint>International Standard Book Number</mat-hint>
+        <mat-error *ngIf="this.bookForm.controls.isbn.invalid"
+          >You must enter the ISBN code</mat-error
+        >
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      fxLayoutGap="20px"
+    >
+      <button
+        [disabled]="!bookForm.valid"
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        <mat-icon>save</mat-icon><span>Save</span>
+      </button>
+
+      <button (click)="onCancel()" mat-raised-button color="warn" type="button">
+        <mat-icon>cancel</mat-icon><span>Cancel</span>
+      </button>
+    </mat-card-actions>
+  </form>
 </mat-card>
