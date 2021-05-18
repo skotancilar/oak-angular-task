@@ -19,7 +19,7 @@ export class BookService {
       "Swann's Way: In Search of Lost Time, Vol. 1",
       'Marcel Proust',
       'https://images-na.ssl-images-amazon.com/images/I/5146m4I7h-L._SX332_BO1,204,203,200_.jpg',
-      'Fantasy',
+      'Biography',
       new Date('Sat Oct 30 2004 03:00:00 GMT+0300 (GMT+03:00)'),
       1424379640
     ),
@@ -27,7 +27,7 @@ export class BookService {
       'The Catcher in the Rye',
       'J. D. Salinger',
       'https://images-na.ssl-images-amazon.com/images/I/518dVCGFuhL._SX323_BO1,204,203,200_.jpg',
-      'Fantasy',
+      'Other',
       new Date('Mon Jan 01 2001 02:00:00 GMT+0200 (GMT+03:00)'),
       9780316769174
     ),
@@ -35,7 +35,7 @@ export class BookService {
       'The Great Gatsby',
       'F. Scott Fitzgerald',
       'https://images-na.ssl-images-amazon.com/images/I/41u-0MIGcpS._SX326_BO1,204,203,200_.jpg',
-      'Action',
+      'Fiction',
       new Date('Sat Oct 30 2004 03:00:00 GMT+0300 (GMT+03:00)'),
       9780743273565
     ),

@@ -21,6 +21,7 @@ export class BookEditComponent implements OnInit {
     'Romance',
     'Biography',
     'Children',
+    'Other'
   ];
   maxDate = new Date(Date.now());
   defaultBookCover: string = 'https://i.stack.imgur.com/1hvpD.jpg';

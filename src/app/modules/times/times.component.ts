@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TimeDataService } from 'src/app/shared/time-data.service';
 
 @Component({
   selector: 'app-times',
@@ -7,14 +8,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./times.component.scss'],
 })
 export class TimesComponent implements OnInit {
-  // @Output() onTimeSelect: EventEmitter<any> = new EventEmitter();
   time: Date = new Date();
   region: string = 'Africa/Abidjan';
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private timeDataService: TimeDataService
+  ) {}
 
   ngOnInit(): void {
     this.updateTime();
+    this.timeDataService.fetchTimezones();
   }
 
   updateTime(): void {

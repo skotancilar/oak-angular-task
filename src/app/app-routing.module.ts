@@ -22,7 +22,10 @@ const routes: Routes = [
       {
         path: 'times',
         component: TimesComponent,
-        children: [{ path: ':region', component: TimeComponent }],
+        children: [
+          { path: ':region/:sub', component: TimeComponent },
+          { path: ':region/:sub/:sub', component: TimeComponent },
+        ],
       },
       {
         path: 'books',

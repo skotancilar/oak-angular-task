@@ -12,6 +12,8 @@ import { BookEditComponent } from 'src/app/modules/books/book-edit/book-edit.com
 import { BookItemComponent } from 'src/app/modules/books/book-item/book-item.component';
 import { BookListComponent } from 'src/app/modules/books/book-list/book-list.component';
 import { BookStartComponent } from 'src/app/modules/books/book-start/book-start.component';
+import { NestedMenuComponent } from 'src/app/modules/times/nested-menu/nested-menu.component';
+import { MenuItemComponent } from 'src/app/modules/times/nested-menu/menu-item/menu-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
@@ -26,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -42,6 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BookItemComponent,
     BookListComponent,
     BookStartComponent,
+    NestedMenuComponent,
+    MenuItemComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +67,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
+    MatTreeModule,
     FormsModule,
     ReactiveFormsModule,
   ],

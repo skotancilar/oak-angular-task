@@ -24,6 +24,10 @@ img {
 h3:last-of-type {
   margin: 0;
 }
+h2,
+h1 {
+  text-align: center;
+}
 .card-actions {
   opacity: 0 !important;
   z-index: -1;
