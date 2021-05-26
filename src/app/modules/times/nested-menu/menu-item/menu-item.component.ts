@@ -1,5 +1,12 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { TimesService } from '../../times.service';
 import { NavItem } from '../nav-item';
 
 @Component({
@@ -9,9 +16,13 @@ import { NavItem } from '../nav-item';
 })
 export class MenuItemComponent implements OnInit {
   @Input() items!: NavItem[];
-  @ViewChild('childMenu') public childMenu: any;
+  @ViewChild('childMenu', { static: true }) public childMenu: any;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private timeService: TimesService) {}
 
   ngOnInit() {}
+
+  formatPath(path: any) {
+    return path.split('/').join('&');
+  }
 }

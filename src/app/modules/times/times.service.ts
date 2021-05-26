@@ -93,7 +93,7 @@ export class TimesService {
   //       ],
   //     },
   //   ];
-  private navItems: NavItem[] = [];
+  navItems: NavItem[] = [];
 
   setNavItems(navItems: NavItem[]) {
     this.navItems = navItems;

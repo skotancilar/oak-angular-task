@@ -1,44 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NavItem } from '../modules/times/nested-menu/nav-item';
+import { Timezone } from '../modules/times/time/timezone.model';
 import { TimesService } from '../modules/times/times.service';
 
 @Injectable({ providedIn: 'root' })
 export class TimeDataService {
-  constructor(private http: HttpClient, private timeService: TimesService) {}
   navItems: string[] = [];
+  isDataFetched = false;
+
+  constructor(private http: HttpClient, private timeService: TimesService) {}
+
   fetchTimezones() {
-    this.http.get('http://worldtimeapi.org/api/timezone').subscribe(
-      (res) => {
-        this.navItems = Object.values(res);
-        // console.log(JSON.stringify(this.convertArray(this.navItems), null, 4));
+    console.log('fetchtimezones');
+    return this.http.get<any>('http://worldtimeapi.org/api/timezone');
+  }
 
-        const convertedNavItems: NavItem[] = [
-          {
-            displayName: 'TIMEZONES',
-            children: [...this.convertArray(this.navItems)],
-          },
-        ];
-
-        this.timeService.setNavItems(convertedNavItems);
-        // console.log(convertedNavItems);
-      },
-      (err) => {
-        console.log(err.message);
-      }
-    );
+  fetchTimezone(timezone: string) {
+    const url = `http://worldtimeapi.org/api/timezone/${timezone}`;
+    return this.http.get<Timezone>(url);
   }
 
   convertArray(navItems: any) {
     if (navItems) {
-      const paths = this.navItems.map((item: string) => {
+      const paths = navItems.map((item: string) => {
         return item.split('/');
       });
 
       var tree;
 
       function arrangeIntoTree(paths: any, navItems: any) {
-        // Adapted from http://brandonclapp.com/arranging-an-array-of-flat-paths-into-a-json-tree-like-structure/
         var tree: any = [];
 
         for (var i = 0; i < paths.length; i++) {
@@ -66,14 +57,11 @@ export class TimeDataService {
           }
         }
         return tree;
-
         function findWhere(array: any, key: any, value: any) {
-          // Adapted from https://stackoverflow.com/questions/32932994/findwhere-from-underscorejs-to-jquery
-          let t = 0; // t is used as a counter
+          let t = 0;
           while (t < array.length && array[t][key] !== value) {
             t++;
-          } // find the index where the id is the as the aValue
-
+          }
           if (t < array.length) {
             return array[t];
           } else {

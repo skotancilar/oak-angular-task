@@ -1,19 +1,49 @@
 <mat-card class="hero">
-  <button
-    class="back-button"
-    (click)="backToTimes()"
-    mat-icon-button
-    color="primary"
-  >
-    <mat-icon>arrow_back</mat-icon>
-    <span>Back</span>
-  </button>
+  <div class="topBar-buttons">
+    <button
+      class="back-button"
+      (click)="backToTimes()"
+      mat-icon-button
+      color="primary"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      <span>Back</span>
+    </button>
+
+    <button
+      class="refresh-button"
+      (click)="onRefresh()"
+      mat-icon-button
+      color="primary"
+    >
+      <mat-icon>refresh</mat-icon>
+      <span>Refresh</span>
+    </button>
+  </div>
 
   <mat-divider></mat-divider>
 
-  <h2 class="time-title text-center">Africa / Abidjan</h2>
-  <h3 class="text-center">Date:</h3>
-  <h2 class="text-center">{{ time | date }}</h2>
-  <h3 class="text-center">Time:</h3>
-  <h2 class="text-center">{{ time | date: "hh:mm:ss" }}</h2>
+  <div *ngIf="!isDataFetched">
+    <mat-spinner class="text-center"></mat-spinner>
+    <h2 class="text-center">Loading...</h2>
+  </div>
+
+  <div *ngIf="isDataFetched && !error.status">
+    <h2 class="time-title text-center">{{ timezone_?.timezone }}</h2>
+    <h3 class="text-center">Date:</h3>
+    <h2 class="text-center">{{ timezone_?.datetime | date }}</h2>
+    <h3 class="text-center">Time:</h3>
+    <h2 class="text-center">
+      {{ timezone_?.datetime | date: "hh:mm:ss":timezone_.utc_offset }}
+    </h2>
+  </div>
+  <mat-card *ngIf="isDataFetched && error.status">
+    <h2 class="color-danger">Something went wrong!!!</h2>
+    <h2 class="color-danger">{{ error.message }}</h2>
+    <img
+      style="display: block; margin: 0 auto"
+      src="https://isplash.app/api/illustration/thumb/L1mZKhCgn.png"
+      alt="Opps!"
+    />
+  </mat-card>
 </mat-card>

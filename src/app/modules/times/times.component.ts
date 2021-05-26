@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeDataService } from 'src/app/shared/time-data.service';
+import { TimesService } from './times.service';
 
 @Component({
   selector: 'app-times',
@@ -14,20 +15,17 @@ export class TimesComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private timeService: TimesService,
     private timeDataService: TimeDataService
   ) {}
 
   ngOnInit(): void {
     this.updateTime();
-    this.timeDataService.fetchTimezones();
   }
 
   updateTime(): void {
     setInterval(() => {
       this.time = new Date();
     }, 1000);
-  }
-  onTimeSelect() {
-    this.router.navigate(['times', this.region]);
   }
 }

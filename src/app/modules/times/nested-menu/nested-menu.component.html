@@ -1,24 +1,58 @@
+<mat-card *ngIf="dataFetched && error.status">
+  <h2 class="color-danger">Something went wrong!!!</h2>
+  <h2 class="color-danger">{{ error.message }}</h2>
+</mat-card>
+
 <div class="basic-container">
+  <button
+    *ngIf="!dataFetched"
+    class="timezone-button"
+    mat-raised-button
+    color="primary"
+  >
+    Loading Timezones...
+    <mat-progress-spinner
+      color="accent"
+      style="height: 10px"
+      class="spinner"
+    ></mat-progress-spinner>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+
   <span *ngFor="let item of navItems">
     <!-- Handle branch node buttons here -->
     <span *ngIf="item.children && item.children.length > 0">
       <button
+        *ngIf="!error.status && dataFetched"
+        class="timezone-button"
         mat-raised-button
         color="primary"
-        [matMenuTriggerFor]="menu_.childMenu"
+        [matMenuTriggerFor]="menu.childMenu"
       >
         {{ item.displayName }}
         <mat-icon>expand_more</mat-icon>
       </button>
-      <app-menu-item #menu_ [items]="item.children"></app-menu-item>
+      <app-menu-item #menu [items]="item.children"></app-menu-item>
     </span>
     <!-- Leaf node buttons here -->
     <span *ngIf="!item.children || item.children.length === 0">
-      <button mat-button color="primary" [routerLink]="item.route">
+      <button
+        mat-button
+        color="primary"
+        [routerLink]="this.formatPath(item.route)"
+      >
         {{ item.displayName }}
       </button>
     </span>
   </span>
+  <button
+    class="refresh-button"
+    mat-fab
+    color="primary"
+    aria-label="Refresh"
+    type="button"
+    (click)="onFetch()"
+  >
+    <mat-icon>refresh</mat-icon>
+  </button>
 </div>
-
-<button type="button" (click)="onFetch()">Fetch Data</button>
