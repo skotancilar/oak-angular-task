@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { TimesComponent } from 'src/app/modules/times/times.component';
 import { BooksComponent } from 'src/app/modules/books/books.component';
 import { ImagesComponent } from 'src/app/modules/images/images.component';
+import { ImageComponent } from 'src/app/modules/images/image/image.component';
+import { ImageListComponent } from 'src/app/modules/images/image-list/image-list.component';
 import { TimeComponent } from 'src/app/modules/times/time/time.component';
 import { BookDetailComponent } from 'src/app/modules/books/book-detail/book-detail.component';
 import { BookEditComponent } from 'src/app/modules/books/book-edit/book-edit.component';
@@ -14,6 +16,8 @@ import { BookListComponent } from 'src/app/modules/books/book-list/book-list.com
 import { BookStartComponent } from 'src/app/modules/books/book-start/book-start.component';
 import { NestedMenuComponent } from 'src/app/modules/times/nested-menu/nested-menu.component';
 import { MenuItemComponent } from 'src/app/modules/times/nested-menu/menu-item/menu-item.component';
+import { AuthComponent } from 'src/app/modules/auth/auth.component';
+import { NotFoundComponent } from 'src/app/modules/not-found/not-found.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
@@ -29,6 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TimesComponent,
     BooksComponent,
     ImagesComponent,
+    ImageComponent,
+    ImageListComponent,
     TimeComponent,
     BookDetailComponent,
     BookEditComponent,
@@ -48,6 +55,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BookStartComponent,
     NestedMenuComponent,
     MenuItemComponent,
+    NotFoundComponent,
+    AuthComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +77,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatGridListModule,
     MatTreeModule,
     FormsModule,

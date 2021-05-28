@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BookService } from '../book.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-edit',
@@ -21,7 +22,7 @@ export class BookEditComponent implements OnInit {
     'Romance',
     'Biography',
     'Children',
-    'Other'
+    'Other',
   ];
   maxDate = new Date(Date.now());
   defaultBookCover: string = 'https://i.stack.imgur.com/1hvpD.jpg';
@@ -29,7 +30,8 @@ export class BookEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private bookService: BookService
+    private bookService: BookService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -42,8 +44,10 @@ export class BookEditComponent implements OnInit {
   onSave() {
     if (this.editMode) {
       this.bookService.updateBook(this.id, this.bookForm.value);
+      this.toastr.success('Book updated');
     } else {
       this.bookService.addBook(this.bookForm.value);
+      this.toastr.success('New book added');
     }
     this.router.navigate(['../'], { relativeTo: this.route });
   }

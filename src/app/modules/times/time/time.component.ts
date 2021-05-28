@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TimeDataService } from 'src/app/shared/time-data.service';
 import { Timezone } from './timezone.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-time',
@@ -20,7 +21,8 @@ export class TimeComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private timeDataService: TimeDataService
+    private timeDataService: TimeDataService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -36,12 +38,13 @@ export class TimeComponent implements OnInit {
         (res: Timezone) => {
           this.isDataFetched = true;
           this.timezone_ = Object.assign(res);
-          console.log(this.timezone_);
+          this.toastr.info(this.timezone_.timezone);
         },
         (err) => {
           this.error.status = true;
           this.isDataFetched = true;
           this.error.message = err.message;
+          this.toastr.error(err.message, 'Opps!');
         }
       );
     });

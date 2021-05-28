@@ -1,0 +1,94 @@
+<mat-card>
+  <form
+    style="width: 400px"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="20px"
+    [formGroup]="imageForm"
+    (submit)="onSave(imageForm.value)"
+  >
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Image Caption</mat-label>
+        <input type="text" name="caption" matInput formControlName="caption" />
+        <mat-icon matSuffix>title</mat-icon>
+        <mat-error
+          *ngIf="
+            this.imageForm.controls.caption.invalid &&
+            this.imageForm.controls.caption.touched
+          "
+          >You must enter a caption</mat-error
+        >
+      </mat-form-field>
+      <div
+        style="width: 400px"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+        fxLayoutGap="20px"
+      >
+        <input
+          #uploadImage
+          hidden="false"
+          type="file"
+          name="imageUrl"
+          onclick="this.value=null"
+          (change)="UploadImage($event)"
+          accept="image/*"
+          multiple="false"
+          formControlName="imageUrl"
+        />
+        <button
+          matInput
+          mat-flat-button
+          color="primary"
+          (click)="uploadImage.click()"
+        >
+          Upload a Picture
+          <mat-icon matSuffix>file_upload</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="
+            this.imageForm.controls.imageUrl.invalid &&
+            this.imageForm.controls.imageUrl.touched
+          "
+          >You must upload an image</mat-error
+        >
+        <mat-progress-bar
+          *ngIf="isUploading"
+          mode="indeterminate"
+        ></mat-progress-bar>
+        <img
+          mat-card-lg-image
+          [src]="imageSrc"
+          alt="{{ this.imageForm.value.caption }}"
+        />
+      </div>
+    </mat-card-content>
+    <mat-card-actions
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      fxLayoutGap="20px"
+    >
+      <button
+        [disabled]="!imageForm.valid"
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        <mat-icon>save</mat-icon><span>Save</span>
+      </button>
+
+      <button (click)="onCancel()" mat-raised-button color="warn" type="button">
+        <mat-icon>cancel</mat-icon><span>Cancel</span>
+      </button>
+      <button
+        (click)="resetForm()"
+        mat-raised-button
+        color="accent"
+        type="button"
+      >
+        <mat-icon>refresh</mat-icon><span>Reset</span>
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

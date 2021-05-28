@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router } from '@angular/router';
+// import { Subscription } from 'rxjs';
+// import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
   selector: 'app-default',
@@ -7,8 +10,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
   isSideBarOpen = false;
-
-  constructor() {}
 
   ngOnInit(): void {}
 

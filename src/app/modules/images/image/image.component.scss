@@ -1,0 +1,20 @@
+mat-card {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+}
+
+img {
+  object-fit: cover;
+  height: 250px;
+  width: auto;
+}
+
+mat-form-field {
+  display: block;
+  margin: 12px auto;
+}
+
+mat-icon:not([matSuffix]) {
+  margin-right: 8px;
+}

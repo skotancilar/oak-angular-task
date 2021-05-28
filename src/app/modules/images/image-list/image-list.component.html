@@ -1,0 +1,58 @@
+<mat-spinner *ngIf="!isImageFetched"></mat-spinner>
+
+<section id="images" *ngIf="isImageFetched && !error.status">
+  <img
+    class="img"
+    [routerLink]="['/images/upload']"
+    routerLinkActive="router-link-active"
+    src="assets/add-new.png"
+    alt="image.caption"
+  />
+  <div class="img" *ngFor="let image of imageList">
+    <img src="{{ image.imageUrl }}" alt="image.caption" />
+    <span>
+      <button
+        (click)="onDeleteImage(image.key)"
+        class="hide"
+        mat-mini-fab
+        color="warn"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+      <p></p>
+    </span>
+  </div>
+</section>
+
+<!-- <mat-grid-list
+  *ngIf="isImageFetched && !error.status"
+  cols="6"
+  rowHeight="200px"
+>
+  <mat-grid-tile rowspan="1" colspan="1">
+    <img
+      [routerLink]="['/images/upload']"
+      routerLinkActive="router-link-active"
+      style="height: 100%"
+      src="assets/add-new.png"
+      alt="image.caption"
+    />
+  </mat-grid-tile>
+  <mat-grid-tile
+    id="image"
+    class="onHover"
+    *ngFor="let image of imageList; let i = index"
+    rowspan="1"
+    colspan="1"
+  >
+    <img src="{{ image.imageUrl }}" alt="image.caption" />
+    <button
+      (click)="onDeleteImage(image.key)"
+      class="hide"
+      mat-mini-fab
+      color="warn"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list> -->

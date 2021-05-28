@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
+  isSideBarOpen = false;
+  isAuthenticated = false;
+  private userSub!: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuthenticated = !!user;
+      console.log('auth ' + this.isAuthenticated);
+    });
+    console.log(this.isAuthenticated);
   }
-
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe;
+    console.log('onDestroy ' + this.isAuthenticated);
+  }
 }

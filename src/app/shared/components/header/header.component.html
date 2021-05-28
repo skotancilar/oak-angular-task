@@ -24,7 +24,7 @@
   </mat-nav-list>
 
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button (click)="onLogout()" mat-menu-item>
       <mat-icon>logout</mat-icon>
       <span>Log Out</span>
     </button>

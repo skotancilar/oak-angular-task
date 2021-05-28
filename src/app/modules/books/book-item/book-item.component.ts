@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Book } from '../book.model';
 import { BookService } from '../book.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-item',
@@ -17,7 +18,8 @@ export class BookItemComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class BookItemComponent implements OnInit {
   }
   onDeleteBook() {
     this.bookService.deleteBook(this.index);
+    this.toastr.info('Book Deleted');
     this.router.navigate(['/books']);
   }
   updateUrl(event: Event) {

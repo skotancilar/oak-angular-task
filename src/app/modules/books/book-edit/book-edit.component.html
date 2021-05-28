@@ -3,7 +3,7 @@
     <mat-card-content>
       <mat-form-field appearance="outline">
         <mat-label>Book Title</mat-label>
-        <input type="text" name="title" s matInput formControlName="title" />
+        <input type="text" name="title" matInput formControlName="title" />
         <mat-icon matSuffix>title</mat-icon>
         <mat-error *ngIf="this.bookForm.controls.title.invalid"
           >You must enter title</mat-error

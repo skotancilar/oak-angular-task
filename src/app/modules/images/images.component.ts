@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-images',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./images.component.scss'],
 })
 export class ImagesComponent implements OnInit {
-  list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  constructor(private router: Router) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.router.navigate(['images/list']);
+  }
 }
