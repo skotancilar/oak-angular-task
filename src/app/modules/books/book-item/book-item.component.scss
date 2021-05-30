@@ -4,20 +4,21 @@
     cursor: pointer;
   }
 }
+.mat-card-image:first-child {
+  margin: 0;
+}
 .active {
   background-color: #d7cdeb;
 }
 
 mat-card {
   margin-bottom: 15px;
-}
-
-mat-card-content {
+  padding: 8px;
 }
 
 img {
   margin: 0;
-  width: 100px;
+  width: 80px;
   object-fit: contain;
 }
 
@@ -36,4 +37,11 @@ h1 {
 .active .card-actions {
   opacity: 1 !important;
   z-index: 1;
+}
+
+.mat-card-actions {
+  padding: 0;
+}
+.mat-card > .mat-card-actions:last-child {
+  margin: 0;
 }

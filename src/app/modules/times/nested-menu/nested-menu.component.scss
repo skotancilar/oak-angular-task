@@ -1,5 +1,5 @@
 .basic-container {
-  height: 30%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,19 +15,19 @@
 .timezone-button {
   display: flex;
   flex-direction: row;
-  font-size: xx-large;
-  padding: 20px;
+  font-size: large;
+  padding: 10px;
 }
-// .spinner::ng-deep .mat-progress-spinner circle {
-//   stroke: white important;
-// }
+.mat-progress-spinner {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 16px;
+}
 .color-danger {
   color: red;
 }
 
 h2 {
   text-align: center;
-}
-.mat-progress-spinner circle {
-  stroke: white !important;
 }

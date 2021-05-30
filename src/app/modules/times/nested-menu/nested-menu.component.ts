@@ -42,13 +42,14 @@ export class NestedMenuComponent implements OnInit {
         ];
         this.timeService.setNavItems(convertedNavItems);
         this.navItems = this.timeService.getNavItems();
-        this.toastr.success(`${this.navItems_.length} timezones are ready`);
       },
       (err) => {
         this.dataFetched = true;
         this.error.status = true;
         this.error.message = err.message;
-        this.toastr.error('Something went wrong' + err.message, 'Opps!');
+        this.toastr.error('Something went wrong \n' + err.message, 'Opps!', {
+          timeOut: 7000,
+        });
       }
     );
   }

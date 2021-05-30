@@ -1,9 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from './user.model';
+import { environment } from 'src/environments/environment';
 
 interface AuthResponseData {
   kind: string;
@@ -22,7 +23,7 @@ export class AuthService {
 
   private authUrl = {
     base: 'https://identitytoolkit.googleapis.com/v1/accounts:',
-    API_KEY: 'AIzaSyD1Q3GqVDbqrxsBYgiF49c3zDwisOVTJik',
+    API_KEY: environment.firebaseConfig.apiKey,
     signUp: 'signUp?key=',
     login: 'signInWithPassword?key=',
   };
@@ -133,7 +134,7 @@ export class AuthService {
     switch (errRes.error.error.message) {
       case 'EMAIL_EXISTS':
         this.toastr.error(
-          'This email already exist. Please use another email address.',
+          'This email already exist. Please use  different email.',
           'This Email Exists!'
         );
         break;
@@ -146,14 +147,22 @@ export class AuthService {
         );
         break;
       case 'EMAIL_NOT_FOUND':
+        this.toastr.info(
+          "The email you entered doesn't belong to an account. Please check your email and try again.",
+          '',
+          {
+            timeOut: 5000,
+          }
+        );
         this.toastr.error(
           'There is no user record corresponding to this identifier. The user may have been deleted.',
           'Email Not Found!'
         );
+
         break;
       case 'INVALID_PASSWORD':
         this.toastr.error(
-          'The password is invalid or the user does not have a password.',
+          'Sorry, your password was incorrect. Please double-check your password.',
           'Invalid Password'
         );
         break;

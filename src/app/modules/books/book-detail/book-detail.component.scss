@@ -1,8 +1,8 @@
 img {
   object-fit: contain;
-  height: 350px;
-  width: 250px;
-  margin: 20px 0;
+  height: 250px;
+  width: 170px;
+  margin-bottom: 10px;
 }
 h2 {
   font-weight: 400;
@@ -12,6 +12,13 @@ h2 {
 .sticky {
   position: sticky;
   position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0; /* Sets the sticky toolbar to be on top */
-  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  top: 150px; /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
+  margin-top: 50%;
+}
+.mat-card-header {
+  justify-content: center;
+}
+.mat-card-header-text {
+  text-align: center;
 }

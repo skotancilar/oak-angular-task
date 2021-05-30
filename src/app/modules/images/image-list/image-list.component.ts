@@ -27,10 +27,10 @@ export class ImageListComponent implements OnInit {
           Object.assign({ key: item.payload.key }, item.payload.val())
         );
         this.isImageFetched = true;
-        console.log(this.imageList);
       },
       (err) => {
         this.error.status = true;
+        this.toastr.error('Something went wrong! ' + err, 'Opps!');
       }
     );
   }
@@ -42,6 +42,8 @@ export class ImageListComponent implements OnInit {
         this.imageService.getAllImages();
         this.toastr.info('Image Deleted');
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        this.toastr.error('Something went wrong! ' + err, 'Opps!')
+      );
   }
 }

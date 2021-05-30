@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   authForm!: FormGroup;
-  isLoginMode = true;
+  isLoginMode = false;
   isLoading = false;
   error = {
     status: false,
@@ -26,18 +26,28 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.authForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
   }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+    this.authForm.reset();
   }
 
   onSubmit() {
     if (!this.authForm.valid) {
-      return;
+      if (!this.authForm.controls.email.valid) {
+        this.toastr.error('Your email is not valid', 'Invalid Email');
+      } else if (!this.authForm.controls.password.valid) {
+        this.toastr.error(
+          'Your password must be at least 6 character',
+          'Invalid Password'
+        );
+      } else {
+        this.toastr.error('Something went wrong. Please try again', 'Opps!');
+      }
     }
     const email = this.authForm.value.email;
     const password = this.authForm.value.password;

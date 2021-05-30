@@ -2,10 +2,10 @@
 
 <section id="images" *ngIf="isImageFetched && !error.status">
   <img
-    class="img"
+    class="img new"
     [routerLink]="['/images/upload']"
     routerLinkActive="router-link-active"
-    src="assets/add-new.png"
+    src="assets/add-image.png"
     alt="image.caption"
   />
   <div class="img" *ngFor="let image of imageList">

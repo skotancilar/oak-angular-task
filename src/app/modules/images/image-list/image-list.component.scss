@@ -5,7 +5,13 @@ button {
   left: 50%;
   transform: translateX(-50%);
 }
-
+section {
+  margin-bottom: 50px;
+  padding-bottom: 100px;
+}
+.img .new svg {
+  color: red;
+}
 .img:hover .hide {
   opacity: 1;
   z-index: 100;
@@ -27,9 +33,7 @@ mat-spinner {
 }
 
 #images {
-  /* Prevent vertical gaps */
   line-height: 0;
-
   -webkit-column-count: 5;
   -webkit-column-gap: 0px;
   -moz-column-count: 5;
@@ -43,14 +47,12 @@ mat-spinner {
 img {
 }
 #images .img {
-  /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
   cursor: pointer;
 }
 
 .img img {
-  /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
 }

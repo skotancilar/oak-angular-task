@@ -12,7 +12,7 @@
           <input type="email" name="email" matInput formControlName="email" />
           <mat-icon matSuffix>email</mat-icon>
           <mat-error *ngIf="this.authForm.controls.email.invalid"
-            >You must enter your email</mat-error
+            >You must enter a valid email address</mat-error
           >
         </mat-form-field>
 
@@ -26,8 +26,11 @@
             formControlName="password"
           />
           <mat-icon matSuffix>password</mat-icon>
+          <mat-hint *ngIf="!authForm.controls.password.touched"
+            >Your password must be at least 6 character</mat-hint
+          >
           <mat-error *ngIf="this.authForm.controls.password.invalid"
-            >You must enter the password</mat-error
+            >Your password must be at least 6 character</mat-error
           >
         </mat-form-field>
       </mat-card-content>

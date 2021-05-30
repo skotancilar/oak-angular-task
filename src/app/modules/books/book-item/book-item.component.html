@@ -31,14 +31,19 @@
     fxLayoutGap="10px"
   >
     <button
-      mat-fab
+      mat-mini-fab
       (click)="onEditBook($event)"
       color="accent"
       aria-label="delete"
     >
       <mat-icon>edit</mat-icon>
     </button>
-    <button (click)="onDeleteBook()" mat-fab color="warn" aria-label="edit">
+    <button
+      (click)="onDeleteBook()"
+      mat-mini-fab
+      color="warn"
+      aria-label="edit"
+    >
       <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>

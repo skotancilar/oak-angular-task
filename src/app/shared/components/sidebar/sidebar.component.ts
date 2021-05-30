@@ -18,12 +18,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
-      console.log('auth ' + this.isAuthenticated);
     });
-    console.log(this.isAuthenticated);
   }
   ngOnDestroy(): void {
     this.userSub.unsubscribe;
-    console.log('onDestroy ' + this.isAuthenticated);
   }
 }

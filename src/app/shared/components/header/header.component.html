@@ -9,20 +9,19 @@
   </button>
   <span class="home" [routerLink]="['']">TBI</span>
   <span class="spacer"></span>
-  <mat-nav-list>
+  <!-- <mat-nav-list>
     <div class="profile">
       <div class="header">
         <h3>Sefa KOTANCILAR</h3>
       </div>
-      <img
-        matRipple
-        [matMenuTriggerFor]="menu"
-        src="https://fastly.4sqi.net/img/user/130x130/92444158-SUSHCYANQJJUV4FI.jpg"
-        alt="profile pic"
-      />
+      <img matRipple [matMenuTriggerFor]="menu" src="" alt="profile pic" />
     </div>
-  </mat-nav-list>
-
+  </mat-nav-list> -->
+  <button mat-raised-button color="default" [matMenuTriggerFor]="menu">
+    Options
+    <mat-icon *ngIf="!isButtonActivated">menu</mat-icon>
+    <!-- <mat-icon *ngIf="!isButtonActivated">expand_more</mat-icon> -->
+  </button>
   <mat-menu #menu="matMenu">
     <button (click)="onLogout()" mat-menu-item>
       <mat-icon>logout</mat-icon>

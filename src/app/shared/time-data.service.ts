@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavItem } from '../modules/times/nested-menu/nav-item';
 import { Timezone } from '../modules/times/time/timezone.model';
 import { TimesService } from '../modules/times/times.service';
 
@@ -12,7 +11,6 @@ export class TimeDataService {
   constructor(private http: HttpClient, private timeService: TimesService) {}
 
   fetchTimezones() {
-    console.log('fetchtimezones');
     return this.http.get<any>('http://worldtimeapi.org/api/timezone');
   }
 
@@ -27,23 +25,23 @@ export class TimeDataService {
         return item.split('/');
       });
 
-      var tree;
+      let tree;
 
       function arrangeIntoTree(paths: any, navItems: any) {
-        var tree: any = [];
+        let tree: any = [];
 
-        for (var i = 0; i < paths.length; i++) {
-          var path = paths[i];
-          var currentLevel = tree;
-          for (var j = 0; j < path.length; j++) {
-            var part = path[j];
+        for (let i = 0; i < paths.length; i++) {
+          let path = paths[i];
+          let currentLevel = tree;
+          for (let j = 0; j < path.length; j++) {
+            let part = path[j];
 
-            var existingPath = findWhere(currentLevel, 'displayName', part);
+            let existingPath = findWhere(currentLevel, 'displayName', part);
 
             if (existingPath) {
               currentLevel = existingPath.children;
             } else {
-              var newPart = {
+              let newPart = {
                 displayName: part,
                 route: navItems[i],
                 children: [],

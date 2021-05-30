@@ -11,7 +11,6 @@ export class TimesService {
   setNavItems(navItems: NavItem[]) {
     this.navItems = navItems;
     this.navItemsChanged.next(this.navItems);
-    console.log(navItems);
   }
 
   getNavItems() {

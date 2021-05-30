@@ -1,29 +1,31 @@
 <mat-card *ngIf="dataFetched && error.status">
-  <h2 class="color-danger">Something went wrong!!!</h2>
-  <h2 class="color-danger">{{ error.message }}</h2>
+  <h2 class="color-danger">
+    Something went wrong!!! <br />
+    Refresh the page again
+  </h2>
+  <button
+    style="display: block; margin: 0 auto"
+    class="refresh-button"
+    mat-fab
+    color="primary"
+    aria-label="Refresh"
+    type="button"
+    (click)="onFetch()"
+  >
+    <mat-icon>refresh</mat-icon>
+  </button>
 </mat-card>
 
-<div class="basic-container">
-  <button
-    *ngIf="!dataFetched"
-    class="timezone-button"
-    mat-raised-button
-    color="primary"
-  >
-    Loading Timezones...
-    <mat-progress-spinner
-      color="accent"
-      style="height: 10px"
-      class="spinner"
-    ></mat-progress-spinner>
-    <mat-icon>expand_more</mat-icon>
-  </button>
+<div class="spinner" *ngIf="!dataFetched">
+  <mat-spinner color="primary"></mat-spinner>
+  <h2>Loading...</h2>
+</div>
 
+<div class="basic-container" *ngIf="!error.status && dataFetched">
   <span *ngFor="let item of navItems">
     <!-- Handle branch node buttons here -->
     <span *ngIf="item.children && item.children.length > 0">
       <button
-        *ngIf="!error.status && dataFetched"
         class="timezone-button"
         mat-raised-button
         color="primary"
@@ -34,7 +36,6 @@
       </button>
       <app-menu-item #menu [items]="item.children"></app-menu-item>
     </span>
-    <!-- Leaf node buttons here -->
     <span *ngIf="!item.children || item.children.length === 0">
       <button
         mat-button

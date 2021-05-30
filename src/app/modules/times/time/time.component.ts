@@ -38,7 +38,6 @@ export class TimeComponent implements OnInit {
         (res: Timezone) => {
           this.isDataFetched = true;
           this.timezone_ = Object.assign(res);
-          this.toastr.info(this.timezone_.timezone);
         },
         (err) => {
           this.error.status = true;
