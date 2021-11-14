@@ -11,11 +11,11 @@ export class TimeDataService {
   constructor(private http: HttpClient, private timeService: TimesService) {}
 
   fetchTimezones() {
-    return this.http.get<any>('http://worldtimeapi.org/api/timezone');
+    return this.http.get<any>('https://worldtimeapi.org/api/timezone');
   }
 
   fetchTimezone(timezone: string) {
-    const url = `http://worldtimeapi.org/api/timezone/${timezone}`;
+    const url = `https://worldtimeapi.org/api/timezone/${timezone}`;
     return this.http.get<Timezone>(url);
   }
 
